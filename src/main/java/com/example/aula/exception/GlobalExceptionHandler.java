@@ -37,8 +37,8 @@ public class GlobalExceptionHandler {
                 .body(Map.of("mensagem", erro.getFieldErrors().get(0).getDefaultMessage()));
     }
 
-    @ExceptionHandler(EmailJaCadastradoException.class)
-    public ResponseEntity<Map<String, Object>> handlerEmailJaCadastrado(EmailJaCadastradoException erro) {
+    @ExceptionHandler(PratoJaCadastradoException.class)
+    public ResponseEntity<Map<String, Object>> handlerEmailJaCadastrado(PratoJaCadastradoException erro) {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(Map.of("mensagem", erro.getMessage()));
