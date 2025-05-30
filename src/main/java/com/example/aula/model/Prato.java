@@ -1,6 +1,8 @@
 package com.example.aula.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -20,7 +22,8 @@ public class Prato {
     @NotBlank(message = "Descrição do prato é obrigatório.")
     private String descricao;
 
-    @NotBlank(message = "Preço do prato é obrigatório.")
+    @NotNull(message = "Preço não pode ser nulo")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Preço deve ser maior que zero")
     private Double preco;
 
     @Enumerated(EnumType.STRING)
