@@ -1,4 +1,4 @@
-# Sistema de Gestão de Restaurantes - Sabor & Arte
+# Sistema de Gestão de Restaurantes - Sabe muito & Sabe pouco
 
 Um sistema moderno para gerenciamento de cardápio de restaurantes, permitindo cadastro, listagem e visualização de pratos com uma experiência visual atraente.
 
