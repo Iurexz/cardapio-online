@@ -34,7 +34,7 @@ public class PratoController {
                 .body(Map.of("mensagem", "Prato cadastrado com sucesso."));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Map<String, Object>> atualizar(@Valid @RequestBody Prato prato) {
         pratoService.atualizar(prato);
         return ResponseEntity
