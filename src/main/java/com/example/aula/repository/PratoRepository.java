@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface PratoRepository extends JpaRepository<Prato, Long> {
-    Optional<Prato> findByNomePratoIgnoreCase(String nomePrato);
+    Optional<Prato> findBynomePrato(String nomePrato);
 }
