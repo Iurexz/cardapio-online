@@ -1,88 +1,91 @@
 # API Gerenciamento de Pratos
 
-API REST para gerenciar pratos de um restaurante, desenvolvida em Java.
+API REST para gerenciar pratos de um restaurante, desenvolvida com Java 17 e Spring Boot.
 
-## 🚀 Como executar
+## Como executar
 
-1. Clone o repositório
-2. Execute o comando:
-   ```bash
-   mvn spring-boot:run
-   ```
-3. A API estará disponível em: `http://localhost:8080`
+1. Clone o repositório.
+2. Execute o projeto com Maven Wrapper:
 
-## 📋 Endpoints
+```bash
+./mvnw spring-boot:run
+```
+
+No Windows:
+
+```bash
+.\mvnw.cmd spring-boot:run
+```
+
+3. A API estará disponível em http://localhost:8080.
+
+## Banco de dados
+
+Por padrão, a aplicação sobe com H2 em memória para desenvolvimento local.
+
+Para usar outro banco, configure variáveis de ambiente:
+
+- DB_URL
+- DB_USERNAME
+- DB_PASSWORD
+
+## Endpoints
 
 ### Listar todos os pratos
-```
+
+```http
 GET /pratos
 ```
 
 ### Buscar prato por ID
-```
+
+```http
 GET /pratos/{id}
 ```
 
 ### Criar novo prato
-```
+
+```http
 POST /pratos
 Content-Type: application/json
 
 {
-  "id": 1,
   "nomePrato": "Salada Caesar",
-  "descricao": "Alface americana, croutons, queijo parmesão e molho caesar.",
-  "preco": 29.00,
-  "categoria": "Entrada",
-  "disponibilidade": "Em estoque",
-  "urlImagem": "[https://example.com/imagens/salada-caesar.jpg](https://example.com/imagens/salada-caesar.jpg)"
+  "descricao": "Alface americana, croutons, parmesão e molho caesar.",
+  "preco": 29.0,
+  "categoria": "SIMPLES",
+  "disponibilidade": "DISPONIVEL",
+  "urlImagem": "https://example.com/imagens/salada-caesar.jpg"
 }
-
 ```
 
 ### Atualizar prato
-```
+
+```http
 PUT /pratos/{id}
 Content-Type: application/json
 
 {
-  "id": 1,
-  "nomePrato": "Salada Caesar",
-  "descricao": "Alface americana, croutons, queijo parmesão e molho caesar.",
-  "preco": 29.00,
-  "categoria": "Entrada",
-  "disponibilidade": "Em estoque",
-  "urlImagem": "[https://example.com/imagens/salada-caesar.jpg](https://example.com/imagens/salada-caesar.jpg)"
-} "Prato Principal"
+  "nomePrato": "Salada Caesar Premium",
+  "descricao": "Alface americana, croutons artesanais, parmesão e molho da casa.",
+  "preco": 34.9,
+  "categoria": "SIMPLES",
+  "disponibilidade": "DISPONIVEL",
+  "urlImagem": "https://example.com/imagens/salada-caesar-premium.jpg"
 }
 ```
 
-### Deletar prato
-```
+### Remover prato
+
+```http
 DELETE /pratos/{id}
 ```
 
-## 💾 Banco de Dados
+## Tecnologias
 
-A API utiliza banco H2 em memória para desenvolvimento. Para produção, configure as variáveis de ambiente no `application.properties`.
-
-## 🛠️ Tecnologias
-
-- Java 17+
+- Java 17
 - Spring Boot
 - Spring Data JPA
-- H2 Database (desenvolvimento)
+- Bean Validation
+- H2 Database
 - Maven
-
-## 📄 Exemplo de Resposta
-
-```json
-{
-  "id": 1,
-  "nome": "Feijoada",
-  "descricao": "Feijoada completa com acompanhamentos",
-  "preco": 25.90,
-  "categoria": "Prato Principal",
-  "dataCriacao": "2024-01-15T10:30:00"
-}
-```

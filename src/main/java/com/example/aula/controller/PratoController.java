@@ -15,7 +15,7 @@ import java.util.Map;
 @RequestMapping("/pratos")
 public class PratoController {
 
-    private PratoService pratoService;
+    private final PratoService pratoService;
 
     public PratoController(PratoService pratoService) {
         this.pratoService = pratoService;
@@ -24,6 +24,11 @@ public class PratoController {
     @GetMapping
     public List<Prato> listarTodos() {
         return pratoService.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Prato buscarPorId(@PathVariable Long id) {
+        return pratoService.buscarPorId(id);
     }
 
     @PostMapping
@@ -35,8 +40,8 @@ public class PratoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> atualizar(@Valid @RequestBody Prato prato) {
-        pratoService.atualizar(prato);
+    public ResponseEntity<Map<String, Object>> atualizar(@PathVariable Long id, @Valid @RequestBody Prato prato) {
+        pratoService.atualizar(id, prato);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(Map.of("mensagem", "Prato atualizado com sucesso"));
